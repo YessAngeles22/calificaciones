@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Agregar Grupo</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="/agregar_alumno">Agregar Alumnos</a></li>
+                <li><a href="/agregar_grupo">Agregar Grupo</a></li>
+                <li><a href="/agregar_materia">Agregar Materia</a></li>
+                <li><a href="/agregar_tareas">Agregar Tareas</a></li>
+                <li><a href="/evaluar">Evaluar Alumnos</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <h1>Agregar Grupo</h1>
+
+            <form action="/agregar_grupo" method="POST">
+                <label for="grado">Grado:</label>
+                <input type="text" id="grado" name="grado" required><br><br>
+
+                <label for="grupo">Grupo:</label>
+                <input type="text" id="grupo" name="grupo" required><br><br>
+
+                <label for="generacion">Generacion:</label>
+                <input type="text" id="generacion" name="generacion" required><br><br>
+
+                <button type="submit">Agregar Grupo</button>
+            </form>
+
+            <h2>Grupos Existentes</h2>
+            <ul>
+                {% for g in grupos %}
+                <li>{{ g.grado }} - {{ g.grupo }} (Generacion: {{ g.generacion }})</li>
+                {% else %}
+                <li>No hay grupos registrados.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Calificaciones por Materia</title>
+</head>
+
+<body>
+    <div class="calificaciones-container">
+        <h1>Calificaciones por Materia</h1>
+
+        {% if calificaciones %}
+        {% for materia, evaluaciones in calificaciones.items() %}
+        <h2>{{ materia }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Alumno</th>
+                    <th>Calificacion</th>
+                     <th>Grupo</th>
+                    <th>Tarea</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evaluacion in evaluaciones %}
+                <tr>
+                    <td>{{ evaluacion.nombre_alumno }}</td>
+                    <td>{{ evaluacion.calificacion }}</td>
+                     <td>{{evaluacion.grupo}}</td>
+                    <td>{{ evaluacion.tarea }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+        {% else %}
+        <p>No hay calificaciones registradas.</p>
+        {% endif %}
+
+        <a href="{{ url_for('evaluar') }}">Regresar a Evaluar</a>
+    </div>
+</body>
+
+</html>

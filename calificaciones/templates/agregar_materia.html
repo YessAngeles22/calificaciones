@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Agregar Materia</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="/agregar_alumno">Agregar Alumnos</a></li>
+                <li><a href="/agregar_grupo">Agregar Grupo</a></li>
+                <li><a href="/agregar_materia">Agregar Materia</a></li>
+                <li><a href="/agregar_tareas">Agregar Tarea</a></li>
+                <li><a href="/evaluar">Evaluar Alumnos</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <h1>Agregar Materia</h1>
+
+            <form action="/agregar_materia" method="POST">
+                <div>
+                    <label for="nombre">Nombre de la Materia:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div>
+                    <label for="codigo">Codigo:</label>
+                    <input type="text" id="codigo" name="codigo" required>
+                </div>
+
+                <div>
+                    <label for="generacion">Generacion:</label>
+                    <input type="text" id="generacion" name="generacion" required>
+                </div>
+
+                <button type="submit">Agregar Materia</button>
+            </form>
+
+            <h2>Materias Existentes</h2>
+            <ul>
+                {% for materia in materias %}
+                <li>{{ materia['nombre'] }} (Codigo: {{ materia['codigo'] }}, Generacion: {{ materia['generacion'] }})</li>
+                {% else %}
+                <li>No hay materias registradas.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

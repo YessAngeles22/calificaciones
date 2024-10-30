@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Gestion de la Aplicacion</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="/agregar_alumno">Agregar Alumnos</a></li>
+                <li><a href="/agregar_grupo">Agregar Grupo</a></li>
+                <li><a href="/agregar_materia">Agregar Materia</a></li>
+                <li><a href="/agregar_tareas">Agregar Tareas</a></li>
+                <li><a href="/evaluar">Evaluar Alumnos</a></li>
+                
+            </ul>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <h1>Bienvenido a la Aplicacion de Gestion</h1>
+            <p>Esta aplicacion te permitira gestionar alumnos, grupos, materias, tareas y calificar trabajos.</p>
+            <p>Selecciona una opcion del menu para comenzar.</p>
+        </div>
+    </div>
+</body>
+
+</html>

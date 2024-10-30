@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Evaluar Alumno</title>
+</head>
+
+<body>
+    <div class="header">
+        <form id="form-filters" method="POST" action="/evaluar">
+            <div class="form-group">
+                <label for="materia">Materia:</label>
+                <select id="materia" name="materia" required>
+                    <option value="">Seleccione una materia</option>
+                    {% for materia in materias %}
+                    <option value="{{ materia }}">{{ materia }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="grupo">Grupo:</label>
+                <select id="grupo" name="grupo" required>
+                    <option value="">Seleccione un grupo</option>
+                    {% for grupo in grupos %}
+                    <option value="{{ grupo }}">{{ grupo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nombre_alumno">Nombre del Alumno:</label>
+                <select id="nombre_alumno" name="nombre_alumno" required>
+                    <option value="">Seleccione un alumno</option>
+                    {% for alumno in alumnos %}
+                    <option value="{{ alumno }}">{{ alumno }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tarea">Tarea:</label>
+                <select id="tarea" name="tarea" required>
+                    <option value="">Seleccione una tarea</option>
+                    {% for tarea in tareas %}
+                    <option value="{{ tarea.nombre_tarea }}">{{ tarea.nombre_tarea }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="calificacion">Calificacion:</label>
+                <input type="number" id="calificacion" name="calificacion" min="0" max="100" required>
+            </div>
+            <button type="submit">Guardar Evaluacion</button>
+        </form>
+        <a href="{{ url_for('calificaciones') }}">Ver Calificaciones</a>
+    </div>
+</body>
+
+</html>

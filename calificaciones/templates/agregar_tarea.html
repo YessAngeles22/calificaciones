@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Agregar Tarea</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="/agregar_alumno">Agregar Alumnos</a></li>
+                <li><a href="/agregar_grupo">Agregar Grupo</a></li>
+                <li><a href="/agregar_materia">Agregar Materia</a></li>
+                <li><a href="/agregar_tarea">Agregar Tarea</a></li>
+                <li><a href="/evaluar">Evaluar Alumnos</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <h1>Agregar Tarea</h1>
+            <form action="/agregar_tareas" method="POST">
+                <div>
+                    <label for="nombre_tarea">Nombre de la Tarea:</label>
+                    <input type="text" id="nombre_tarea" name="nombre_tarea" required>
+                </div>
+
+                <div>
+                    <label for="materia">Materia:</label>
+                    <select id="materia" name="materia" required>
+                        <option value="">Seleccione una materia</option>
+                        {% for materia in materias %}
+                        <option value="{{ materia.nombre }}">{{ materia.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="grado">Grado:</label>
+                    <select id="grado" name="grado" required>
+                        <option value="">Seleccione un grado</option>
+                        {% for grado in grados %}
+                        <option value="{{ grado }}">{{ grado }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="grado_grupo">Grupo:</label>
+                    <select id="grado_grupo" name="grado_grupo" required>
+                        <option value="">Seleccione un grado y grupo</option>
+                        {% for grupo in grupos %}
+                        <option value="{{ grupo }}">{{ grupo }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit">Agregar Tarea</button>
+            </form>
+
+            <h2>Tareas Existentes</h2>
+            <ul>
+                {% for tarea in tareas %}
+                <li>{{ tarea['nombre_tarea'] }} - {{ tarea['materia'] }} ({{ tarea['grado_grupo'] }})</li>
+                {% else %}
+                <li>No hay tareas existentes.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
